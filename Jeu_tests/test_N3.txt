@@ -1,7 +1,7 @@
-terrain_jeu_test.txt
-N3.prg
+Jeu_tests/terrain_jeu_test.txt
+Jeu_tests/N3.prg
 12
 N
-9
+6
 7
 E

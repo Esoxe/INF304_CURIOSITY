@@ -1,7 +1,4 @@
 Jeu_tests/terrain_jeu_test.txt
-Jeu_tests/N1.prg
-2
-N
-3
-4
-E
+Jeu_tests/S3.prg
+7
+S

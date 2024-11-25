@@ -1,4 +1,4 @@
-terrain_jeu_test.txt
-O1.prg
+Jeu_tests/terrain_jeu_test.txt
+Jeu_tests/O1.prg
 3
 O
