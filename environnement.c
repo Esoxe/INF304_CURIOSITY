@@ -13,7 +13,6 @@ erreur_terrain initialise_environnement(Environnement *envt,
   erreur_terrain errt;
   int x, y; // Position initiale du robot
   FILE *f;
-
   f = fopen(fichier_terrain, "r");
 
   errt = lire_terrain(f, &(envt->t), &x, &y);
@@ -21,9 +20,7 @@ erreur_terrain initialise_environnement(Environnement *envt,
   if (errt != OK) {
     return errt;
   }
-
   init_robot(&(envt->r), x, y, Est);
-
   return errt;
 }
 

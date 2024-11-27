@@ -136,7 +136,7 @@ int main(int argc,char **argv){
     gestion_erreur_programme(errp);
     init_etat(&etat);
     res=OK_ROBOT;
-    for(i;i<nb_pas && res==OK_ROBOT;i++){
+    for(i=0;i<nb_pas && res==OK_ROBOT;i++){
         res=exec_pas(&prog,&envt,&etat);
         afficher_envt(&envt);
     }

@@ -79,6 +79,34 @@ erreur_terrain lire_terrain(FILE *f, Terrain *t, int *x, int *y) {
   return OK;
 }
 
+void ecrire_terrain(FILE *f,Terrain *t,int x,int y){
+  int l=t->largeur;
+  int h=t->hauteur;
+  for(int i=0;i<h;i++){
+    for(int j =0;j<l;j++){
+      if(!(i==x && j ==y)){
+        switch (t->tab[j][i])
+        {
+        case EAU:
+          fputc('~',f);
+          break;
+        case ROCHER:
+          fputc('#',f);
+          break;
+        case LIBRE:
+          fputc('.',f);
+          break;
+        default:
+          break;
+        }
+      }
+      else 
+        fputc('C',f);
+    }
+    fputc('\n',f);
+  }
+}
+
 int largeur(Terrain *t){
   return t->largeur;
 }
@@ -114,6 +142,7 @@ void afficher_terrain(Terrain *t){
     }
 
   }
+  printf("\n");
 }
 
 
