@@ -3,12 +3,14 @@
 
 #include "robot.h"
 #include "terrain.h"
+#include "observateur.h"
 
 /* Environnement : terrain + robot */
 
 typedef struct {
   Robot r;
   Terrain t;
+  Etat e_observateur;
 } Environnement;
 
 /* Initialise l'environnement envt :
@@ -56,5 +58,7 @@ int mesure_envt(Environnement *envt, int d);
 
 /* Afficher le terrain avec la position et l'orientation du robot */
 void afficher_envt(Environnement *envt);
+
+int observ_result(Environnement *envt);
 
 #endif

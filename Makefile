@@ -1,6 +1,6 @@
 CC=clang -Wall
 
-PROGRAMMES=test_terrain test_robot robot_terrain curiosity curiosity-test
+PROGRAMMES=test_terrain test_robot robot_terrain curiosity curiosity-test curiosity-obs
 
 all: $(PROGRAMMES)
 
@@ -21,7 +21,7 @@ robot.o: robot.c robot.h
 
 terrain.o: terrain.c terrain.h
 
-environnement.o: environnement.c environnement.h robot.h terrain.h
+environnement.o: environnement.c environnement.h robot.h terrain.h observateur.h
 
 programme.o: programme.c programme.h type_pile.h
 
@@ -39,6 +39,11 @@ curiosity.o: curiosity.c environnement.h programme.h \
 curiosity-test.o: curiosity-test.c environnement.h programme.h \
 	interprete.h robot.h terrain.h type_pile.h
 
+curiosity-obs.o: curiosity-obs.c environnement.h programme.h \
+	interprete.h robot.h terrain.h type_pile.h
+
+observateur.o: observateur.c observateur.h \
+
 ######################################################################
 #                       Règles d'édition de liens                    #
 ######################################################################
@@ -53,15 +58,19 @@ robot_terrain: robot_terrain.o terrain.o robot.o
 	$(CC) $^ -o $@
 
 curiosity: curiosity.o environnement.o programme.o interprete.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
 curiosity-test: curiosity-test.o environnement.o programme.o interprete.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
 curiosity-test%: curiosity-test.o environnement.o programme.o interprete%.o \
-	robot.o terrain.o type_pile.o
+	robot.o terrain.o type_pile.o observateur.o
+	$(CC) $^ -o $@
+
+curiosity-obs: curiosity-obs.o environnement.o programme.o interprete.o \
+	robot.o terrain.o type_pile.o observateur.o
 	$(CC) $^ -o $@
 
 clean:

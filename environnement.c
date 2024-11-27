@@ -24,11 +24,16 @@ erreur_terrain initialise_environnement(Environnement *envt,
 
   init_robot(&(envt->r), x, y, Est);
 
+  envt->e_observateur = etat_initial();
+
   return errt;
 }
 
 resultat_deplacement avancer_envt(Environnement *envt) {
   int x, y; // Position devant le robot
+
+  // ajout transition
+  envt->e_observateur=fct2_transition(envt->e_observateur, A);
 
   // Récupérer la position devant le robot
   position_devant(&(envt->r), &x, &y);
@@ -55,10 +60,17 @@ resultat_deplacement avancer_envt(Environnement *envt) {
 }
 
 /* Tourner le robot à gauche */
-void gauche_envt(Environnement *envt) { tourner_a_gauche(&(envt->r)); }
+void gauche_envt(Environnement *envt) { 
+  tourner_a_gauche(&(envt->r)); 
+  envt->e_observateur=fct2_transition(envt->e_observateur, G);
+  }
 
 /* Tourner le robot à droite */
-void droite_envt(Environnement *envt) { tourner_a_droite(&(envt->r)); }
+void droite_envt(Environnement *envt) { 
+  tourner_a_droite(&(envt->r)); 
+  envt->e_observateur=fct2_transition(envt->e_observateur, D);
+  
+  }
 
 /* Effectuer une mesure
    Paramètre d : la direction de la mesure
@@ -81,6 +93,10 @@ int mesure_envt(Environnement *envt, int d) {
   int x, y;   // Position courante du robot
   int dx, dy; // Direction du robot
   int mx, my; // Position de la mesure
+
+  if (d==1){
+    envt->e_observateur=fct2_transition(envt->e_observateur, M);
+  }
 
   position(&(envt->r), &x, &y);
 
@@ -143,9 +159,6 @@ int mesure_envt(Environnement *envt, int d) {
   default:
     return 3;
   }
-
-  // À corriger : il devrait y avoir une fonction dans le paquetage
-  // terrain pour tester le type de case
   switch (envt->t.tab[mx][my]) {
   case LIBRE:
     return 0;
@@ -156,6 +169,10 @@ int mesure_envt(Environnement *envt, int d) {
   }
   // Ne devrait pas arriver
   return 3;
+}
+
+int observ_result(Environnement *envt){
+  return est_final(envt->e_observateur);
 }
 
 /* Afficher le terrain avec la position et l'orientation du robot */
