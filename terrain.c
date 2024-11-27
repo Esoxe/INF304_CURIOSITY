@@ -103,7 +103,7 @@ void ecrire_terrain(FILE *f,Terrain *t,int x,int y){
       else 
         fputc('C',f);
     }
-    fputc('\n',f);
+    fputs("\n",f);
   }
 }
 

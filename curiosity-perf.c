@@ -128,7 +128,6 @@ int main(int argc,char **argv){
     res=OK_ROBOT;
     for(int i=0;i<nb_step_max && res==OK_ROBOT;i++){
       res=exec_pas(&prog,&envt,&etat);
-      afficher_envt(&envt);
       nb_pas++;
     }
     switch (res)
@@ -162,5 +161,6 @@ int main(int argc,char **argv){
   printf("Pourentage de terrain ou le robot est resté bloqué : %.2f %%\n",nb_b/N*100);
   printf("Nombre de terrain ou le robot est rentré dans un obstacle : %.2f \n",nb_obs);
   printf("Pourentage de terrain ou le robot est rentré dans un obstacle : %.2f %%\n",nb_obs/N*100);
+  if(nb_s!=0)
   printf("Nombre de pas moyen effectués pour les sorties : %.2f \n",total_pas/nb_s);
 }
