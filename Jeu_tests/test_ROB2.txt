@@ -1,0 +1,6 @@
+Jeu_tests/terrain_jeu_test.txt
+2
+N
+3
+4
+E

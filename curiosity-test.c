@@ -140,6 +140,7 @@ int main(int argc,char **argv){
         res=exec_pas(&prog,&envt,&etat);
         afficher_envt(&envt);
     }
+
     switch (res) {
         case OK_ROBOT:
             if(i==nb_pas){
