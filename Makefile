@@ -86,7 +86,7 @@ curiosity-obs: curiosity-obs.o environnement.o programme.o interprete.o \
 	$(CC) $^ -o $@
 
 curiosity-perf:curiosity-perf.o generation_terrains.o interprete.o programme.o \
-	terrain.o type_pile.o environnement.o robot.o
+	terrain.o type_pile.o environnement.o robot.o observateur.o
 
 	$(CC) $^ -o $@
 
