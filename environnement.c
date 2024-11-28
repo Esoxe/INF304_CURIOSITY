@@ -30,7 +30,7 @@ resultat_deplacement avancer_envt(Environnement *envt) {
   int x, y; // Position devant le robot
 
   // ajout transition
-  envt->e_observateur=fct2_transition(envt->e_observateur, A);
+  envt->e_observateur=fct_transition(envt->e_observateur, A);
 
   // Récupérer la position devant le robot
   position_devant(&(envt->r), &x, &y);
@@ -59,13 +59,13 @@ resultat_deplacement avancer_envt(Environnement *envt) {
 /* Tourner le robot à gauche */
 void gauche_envt(Environnement *envt) { 
   tourner_a_gauche(&(envt->r)); 
-  envt->e_observateur=fct2_transition(envt->e_observateur, G);
+  envt->e_observateur=fct_transition(envt->e_observateur, G);
   }
 
 /* Tourner le robot à droite */
 void droite_envt(Environnement *envt) { 
   tourner_a_droite(&(envt->r)); 
-  envt->e_observateur=fct2_transition(envt->e_observateur, D);
+  envt->e_observateur=fct_transition(envt->e_observateur, D);
   
   }
 
@@ -92,7 +92,7 @@ int mesure_envt(Environnement *envt, int d) {
   int mx, my; // Position de la mesure
 
   if (d==1){
-    envt->e_observateur=fct2_transition(envt->e_observateur, M);
+    envt->e_observateur=fct_transition(envt->e_observateur, M);
   }
 
   position(&(envt->r), &x, &y);

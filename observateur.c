@@ -69,9 +69,8 @@ Etat fct2_transition(Etat e , Alphabet c) {
             break;
         case M:
             return Init;
-        // default:
-        //     return Init;
-        //     break;
+        default:
+             break;
         }
         break;
     case Move:
@@ -85,16 +84,14 @@ Etat fct2_transition(Etat e , Alphabet c) {
         case M:
             return Init;
             break;
-        // default:
-        //     return Init;
-        //     break;
+        default:
+            break;
         }
         break;
     case Erreur:
         return Erreur;
-    // default:
-    //     return Init;
-    //     break;
+    default:
+        break;
     }
 }
 
